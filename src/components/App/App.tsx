@@ -10,19 +10,19 @@ function App() {
   const [value, setValue] = useState<Votes>({ good: 0, neutral: 0, bad: 0 });
 
   
-  function handleVote(type: VoteType) {
+  function handleVote(type: VoteType): void {
     setValue(prev => ({
       ...prev,
       [type]: prev[type] + 1,
     }));
   }
 
-  function resetVotes() {
+  function resetVotes(): void {
     setValue({ good: 0, neutral: 0, bad: 0 });
   }
 
   const totalVotes = value.bad + value.good + value.neutral;
-  const rate =
+  const positiveRate =
     totalVotes === 0 ? 0 : Math.round((value.good / totalVotes) * 100);
     const canReset = totalVotes > 0;
 
@@ -39,7 +39,7 @@ function App() {
           <VoteStats
             votes={value}
             totalVotes={totalVotes}
-            rate={rate}
+            positiveRate={positiveRate}
           />
         ) : (
           <Notification />

@@ -4,13 +4,13 @@ import styles from "./VoteStats.module.css";
 interface VoteStatsProps {
   votes: Votes;
   totalVotes: number;
-  rate: number;
+  positiveRate: number;
 }
 
 export default function VoteStats({
   votes,
   totalVotes,
-  rate,
+  positiveRate,
 }: VoteStatsProps) {
   return (
     <div className={styles.container}>
@@ -27,7 +27,7 @@ export default function VoteStats({
         Total: <strong>{totalVotes}</strong>
       </p>
       <p className={styles.stat}>
-        Positive: <strong>{rate}%</strong>
+        Positive: <strong>{positiveRate}%</strong>
       </p>
     </div>
   );
